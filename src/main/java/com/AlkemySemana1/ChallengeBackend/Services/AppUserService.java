@@ -17,7 +17,7 @@ public class AppUserService {
 @Autowired
 AppUserRepository userRepository;
 
-private AppUser createAppUser(@RequestBody RequestAppUser userRequest ){
+public AppUser createAppUser(RequestAppUser userRequest ){
     AppUser user = new AppUser();
     user.setEmail(userRequest.getEmail());
     user.setPassword(userRequest.getPassword());
