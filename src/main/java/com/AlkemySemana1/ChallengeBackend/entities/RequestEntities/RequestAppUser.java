@@ -10,12 +10,10 @@ import lombok.NoArgsConstructor;
  *
  * @author delam
  */
-@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class RequestAppUser {
-private Long id;
 private String email;
 private String password;
 }

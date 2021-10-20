@@ -3,6 +3,7 @@ package com.AlkemySemana1.ChallengeBackend.entities;
 
 import java.time.LocalDate;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +27,7 @@ private String image;
 private String category;
 private LocalDate creationDate;
 @ManyToOne
+@JoinColumn(name = "userId")
 private AppUser appUser;
 
     
