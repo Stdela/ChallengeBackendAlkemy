@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
  *
  * @author delam
  */
-@Entity
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,8 +24,8 @@ private String content;
 private String image;
 private String category;
 private LocalDate creationDate;
-@ManyToOne
-@JoinColumn(name = "userId")
-private AppUser appUser;
+//@ManyToOne
+//@JoinColumn(name = "userId")
+//private AppUser appUser;
 
 }
