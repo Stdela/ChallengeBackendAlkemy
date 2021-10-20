@@ -5,13 +5,13 @@
  */
 package com.AlkemySemana1.ChallengeBackend.Repositories;
 
-import com.AlkemySemana1.ChallengeBackend.entities.AppUser;
+import com.AlkemySemana1.ChallengeBackend.entities.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author delam
  */
-public interface AppUserRepository extends JpaRepository<AppUser,Long>{
-   
+public interface PostRepository extends JpaRepository<Post,Long> {
+    
 }
