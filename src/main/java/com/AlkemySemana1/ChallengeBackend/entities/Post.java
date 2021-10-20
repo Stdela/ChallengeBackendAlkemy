@@ -28,6 +28,5 @@ private LocalDate creationDate;
 @ManyToOne
 private AppUser appUser;
 
-
-
+    
 }
