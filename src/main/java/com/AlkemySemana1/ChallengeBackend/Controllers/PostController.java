@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -30,36 +31,43 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RestController
 @RequestMapping("/posts")
 public class PostController {
+
     @Autowired
     PostService postService;
     @Autowired
     PostRepository postRepo;
-    
+
     // TODO: edit all search filters
     @GetMapping()
-    public List<Post> list() {
-        return postRepo.findAll();
+    public List postist(@RequestParam(required = false) String title, @RequestParam(required = false) String category) {
+        if (title != null) {
+            return postRepo.findByTitle(title);
+        } else if (category != null) {
+            return postRepo.findByCategory(category);
+        } else {
+            return postRepo.findPosts();
+        }
     }
-    
+
     @GetMapping("/{id}")
     public Post get(@PathVariable Long id) throws Exception {
         return postRepo.getById(id);
     }
-    
+
     @PatchMapping("/{id}")
     public Post patch(@PathVariable Long id, @RequestBody UpdatePost updatePost) {
         return postService.updatePost(updatePost, id);
     }
-    
+
     @PostMapping
     public Post post(@RequestBody RequestPost postRequest) {
         return postService.createPost(postRequest);
-        
+
     }
-    
+
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         postRepo.deleteById(id);
     }
-    
+
 }
