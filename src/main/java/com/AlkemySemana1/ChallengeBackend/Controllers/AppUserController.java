@@ -31,21 +31,6 @@ public class AppUserController {
     AppUserService appUserService;
     
     
-    @GetMapping()
-    public List<Object> list() {
-        return null;
-    }
-    
-    @GetMapping("/{id}")
-    public Object get(@PathVariable String id) {
-        return null;
-    }
-    
-    @PutMapping("/{id}")
-    public ResponseEntity<?> put(@PathVariable String id, @RequestBody Object input) {
-        return null;
-    }
-    
     @PostMapping
     @RequestMapping("/sign_up")
     public AppUser post(@RequestBody RequestAppUser appUser) {
@@ -54,14 +39,10 @@ public class AppUserController {
         
         
     }
-    
-    
+      
     // TODO USERLOGIN
     
     
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable String id) {
-        return null;
-    }
+  
     
 }
