@@ -41,9 +41,9 @@ public class AppUserService implements UserDetailsService {
         return user;
 
     }
-    
-    
-    public UserDetails loadbyUsername(String email) throws UsernameNotFoundException {
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
         if (userRepository.findByEmail(email) == null) {
             throw new UsernameNotFoundException("User does not exist: " + email);
@@ -57,7 +57,7 @@ public class AppUserService implements UserDetailsService {
                 true,
                 true,
                 true,
-                Arrays.asList(new SimpleGrantedAuthority("ADMIN")));
+                Arrays.asList(new SimpleGrantedAuthority("USER")));
 
     }
 

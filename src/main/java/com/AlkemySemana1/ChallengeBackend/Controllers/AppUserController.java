@@ -39,7 +39,9 @@ public class AppUserController {
         
         
     }
-      
+      public String login(@RequestBody AppUser appUser){
+          
+      }
     // TODO USERLOGIN
     
     
