@@ -5,6 +5,7 @@
  */
 package com.AlkemySemana1.ChallengeBackend.Controllers;
 
+import com.AlkemySemana1.ChallengeBackend.Security.Filter.JwtResponse;
 import com.AlkemySemana1.ChallengeBackend.Security.Filter.JwtTokenUtil;
 import com.AlkemySemana1.ChallengeBackend.Security.Filter.JwtUserDetailsService;
 import com.AlkemySemana1.ChallengeBackend.Services.AppUserService;
@@ -49,9 +50,9 @@ public class AppUserController {
 
     @PostMapping
     @RequestMapping("/sign_up")
-    public AppUser post(@RequestBody RequestAppUser appUser) {
-        return appUserService.createAppUser(appUser);
-
+    public String post(@RequestBody RequestAppUser appUser) {
+        appUserService.createAppUser(appUser);
+        return "User created";
     }
 
     @PostMapping
@@ -61,7 +62,6 @@ public class AppUserController {
         authenticate(authenticationRequest.getEmail(), authenticationRequest.getPassword());
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
-
         final String token = jwtTokenUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(new JwtResponse(token));

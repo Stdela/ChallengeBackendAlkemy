@@ -37,16 +37,26 @@ public class PostController {
     @Autowired
     PostRepository postRepo;
 
-    // TODO: edit all search filters
     @GetMapping()
-    public List postist(@RequestParam(required = false) String title, @RequestParam(required = false) String category) {
-        if (title != null) {
-            return postRepo.findByTitle(title);
+    public List postist(@RequestParam(required = false) String title, @RequestParam(required = false) String category) throws Exception {
+
+        if (title != null && category != null) {
+            String title1 = title.replace("-", " ");
+            String category1 = category.replace("-", " ");
+            postRepo.findByTitleAndCategory(title1, category1);
+        } else if (title != null) {
+
+            String title1 = title.replace("-", " ");
+            return postRepo.findByTitle(title1);
         } else if (category != null) {
-            return postRepo.findByCategory(category);
+            String category1 = category.replace("-", " ");
+            return postRepo.findByCategory(category1);
         } else {
             return postRepo.findPosts();
         }
+
+        return postRepo.findPosts();
+
     }
 
     @GetMapping("/{id}")

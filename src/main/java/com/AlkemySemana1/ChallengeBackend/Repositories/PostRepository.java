@@ -10,6 +10,7 @@ import com.AlkemySemana1.ChallengeBackend.entities.Post;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
@@ -27,5 +28,9 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     @Query("SELECT NEW com.AlkemySemana1.ChallengeBackend.entities.DtoEntities.PostDto(p.id, p.title, p.content, p.image, p.category, p.creationDate) from Post p ORDER BY p.creationDate DESC")
     List<PostDto> findPosts();
+    
+    @Query("SELECT NEW com.AlkemySemana1.ChallengeBackend.entities.DtoEntities.PostDto(p.id, p.title, p.content, p.image, p.category, p.creationDate)"
+            + " from Post p WHERE p.title = :title AND p.category = :category ORDER BY p.creationDate DESC")
+    List<PostDto> findByTitleAndCategory(@Param("title")String title, @Param("category") String category);
 
 }
