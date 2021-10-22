@@ -39,10 +39,13 @@ public class AppUserController {
         
         
     }
+    @PostMapping
+    @RequestMapping("/")
       public String login(@RequestBody AppUser appUser){
-          
+          appUserService.loadUserByUsername(appUser.getEmail());
+          return "User logged in";
       }
-    // TODO USERLOGIN
+   
     
     
   
