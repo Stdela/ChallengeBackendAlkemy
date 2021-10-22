@@ -32,7 +32,7 @@ public class PostService {
 
     public Post updatePost(UpdatePost updatePost, Long id) {
         Post post = postRep.findById(id).get();
-
+        post.setContent(updatePost.getContent());
         post.setCategory(updatePost.getCategory());
         post.setImage(updatePost.getImage());
         post.setTitle(updatePost.getTitle());

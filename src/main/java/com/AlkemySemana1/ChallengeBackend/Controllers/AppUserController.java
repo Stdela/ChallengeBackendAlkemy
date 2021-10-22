@@ -37,36 +37,37 @@ import org.springframework.web.bind.annotation.PutMapping;
 @CrossOrigin
 @RequestMapping("/auth")
 public class AppUserController {
-
+    
     @Autowired
     AppUserService appUserService;
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
-
+    
     @Autowired
     private JwtUserDetailsService userDetailsService;
     @Autowired
     private AuthenticationManager authenticationManager;
-
+    
     @PostMapping
     @RequestMapping("/sign_up")
-    public String post(@RequestBody RequestAppUser appUser) {
+    public ResponseEntity<?> registerUser(@RequestBody RequestAppUser appUser) {
+        
         appUserService.createAppUser(appUser);
-        return "User created";
+        return ResponseEntity.ok("User created");
     }
-
+    
     @PostMapping
     @RequestMapping("/login")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AppUser authenticationRequest) throws Exception {
-
+        
         authenticate(authenticationRequest.getEmail(), authenticationRequest.getPassword());
-
+        
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
         final String token = jwtTokenUtil.generateToken(userDetails);
-
+        
         return ResponseEntity.ok(new JwtResponse(token));
     }
-
+    
     private void authenticate(String mail, String password) throws Exception {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(mail, password));
@@ -76,5 +77,5 @@ public class AppUserController {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
     }
-
+    
 }
