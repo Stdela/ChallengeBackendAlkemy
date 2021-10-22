@@ -36,6 +36,7 @@ public class JwtUserDetailsService implements UserDetailsService {
         AppUser appuser = userRepository.findByEmail(email);
 
         return new org.springframework.security.core.userdetails.User(
+                
                 appuser.getEmail(),
                 appuser.getPassword(),
                 true,

@@ -1,0 +1,246 @@
+{
+	"info": {
+		"_postman_id": "007be9ea-cb77-46ea-a7ef-5d4c6de29d06",
+		"name": "BackendChallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RegisterUser",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"santiagoodelamer@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/sign_up",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"sign_up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"email\": \"santiagoodelamer@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPosts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW50aWFnb29kZWxhbWVyQGdtYWlsLmNvbSIsImV4cCI6MTYzNDkzMjcyMiwiaWF0IjoxNjM0OTE0NzIyfQ.xxeb3rTD882h3nKjvOAp203I4uSRRdfdNTZlomnAJQWK8kaKz1YBIC8On17TwjxsphNSBksLSdtALw0avGGvBA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePost",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW50aWFnb29kZWxhbWVyQGdtYWlsLmNvbSIsImV4cCI6MTYzNDkzMjcyMiwiaWF0IjoxNjM0OTE0NzIyfQ.xxeb3rTD882h3nKjvOAp203I4uSRRdfdNTZlomnAJQWK8kaKz1YBIC8On17TwjxsphNSBksLSdtALw0avGGvBA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Setting up your first house\",\r\n    \"content\":\"In order to buy your first property...\",\r\n    \"image\":\"https://1.bp.blogspot.com/-IEjIFnGvBOo/XlztBNjq7pI/AAAAAAAAktY/0BBVTOU7a-UYI4sewlJBvd7oBic4lRJYwCPcBGAYYCw/s1600/Spring-rest.png\",\r\n    \"category\":\"housing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSinglePost",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW50aWFnb29kZWxhbWVyQGdtYWlsLmNvbSIsImV4cCI6MTYzNDkzMjcyMiwiaWF0IjoxNjM0OTE0NzIyfQ.xxeb3rTD882h3nKjvOAp203I4uSRRdfdNTZlomnAJQWK8kaKz1YBIC8On17TwjxsphNSBksLSdtALw0avGGvBA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/posts/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"posts",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SoftDeletePost",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/posts/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"posts",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EditContent",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"War on terrorism\",\r\n    \"content\": \"EDITED CONTENT\",\r\n    \"image\": \"EDITED URL\",\r\n    \"category\": \"politics\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/posts/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"posts",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW50aWFnb29kZWxhbWVyQGdtYWlsLmNvbSIsImV4cCI6MTYzNDkzMjcyMiwiaWF0IjoxNjM0OTE0NzIyfQ.xxeb3rTD882h3nKjvOAp203I4uSRRdfdNTZlomnAJQWK8kaKz1YBIC8On17TwjxsphNSBksLSdtALw0avGGvBA",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

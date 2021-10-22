@@ -1,4 +1,4 @@
-package com.AlkemySemana1.ChallengeBackend.Controllers;
+package com.AlkemySemana1.ChallengeBackend.Security.Filter;
 
 import java.io.Serializable;
 import lombok.Data;
