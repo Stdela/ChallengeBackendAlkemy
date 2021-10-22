@@ -211,6 +211,107 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "TitleFliter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW50aWFnb29kZWxhbWVyQGdtYWlsLmNvbSIsImV4cCI6MTYzNDkzMjcyMiwiaWF0IjoxNjM0OTE0NzIyfQ.xxeb3rTD882h3nKjvOAp203I4uSRRdfdNTZlomnAJQWK8kaKz1YBIC8On17TwjxsphNSBksLSdtALw0avGGvBA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/posts?title=china",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "china"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CategoryFilter",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/posts?category=politics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "politics"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FilterbyTitleandCategory(ERROR)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/posts?category=international-relations&title=China",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "international-relations"
+						},
+						{
+							"key": "title",
+							"value": "China"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
