@@ -25,8 +25,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
             + " from Post p WHERE p.category = :category ORDER BY p.creationDate DESC ")
     List<PostDto> findByCategory(String category);
 
-    @Query("SELECT NEW com.AlkemySemana1.ChallengeBackend.entities.DtoEntities.PostDto(p.id, p.title, p.content, p.image, p.category, p.creationDate)"
-            + "ORDER BY p.creationDate DESC ")
+    @Query("SELECT NEW com.AlkemySemana1.ChallengeBackend.entities.DtoEntities.PostDto(p.id, p.title, p.content, p.image, p.category, p.creationDate) from Post p ORDER BY p.creationDate DESC")
     List<PostDto> findPosts();
 
 }
