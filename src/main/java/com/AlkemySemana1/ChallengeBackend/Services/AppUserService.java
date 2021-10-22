@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Service
 @Transactional
 
-public class AppUserService implements UserDetailsService {
+public class AppUserService {
 
     @Autowired
     AppUserRepository userRepository;
@@ -42,23 +42,6 @@ public class AppUserService implements UserDetailsService {
 
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
-        if (userRepository.findByEmail(email) == null) {
-            throw new UsernameNotFoundException("User does not exist: " + email);
-        }
-        AppUser appuser = userRepository.findByEmail(email);
-
-        return new org.springframework.security.core.userdetails.User(
-                appuser.getEmail(),
-                appuser.getPassword(),
-                true,
-                true,
-                true,
-                true,
-                Arrays.asList(new SimpleGrantedAuthority("USER")));
-
-    }
+    
 
 }
