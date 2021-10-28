@@ -1,5 +1,6 @@
 package com.AlkemySemana1.ChallengeBackend.Security.Filter;
 
+import com.AlkemySemana1.ChallengeBackend.Repositories.AppUserRepository;
 import com.AlkemySemana1.ChallengeBackend.entities.AppUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -9,6 +10,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
@@ -19,7 +21,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class JwtTokenUtil implements Serializable {
-
+    
+    @Autowired
+    AppUserRepository ur;
     private static final long serialVersionUID = -2550185165626007488L;
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
 
@@ -58,7 +62,10 @@ public class JwtTokenUtil implements Serializable {
     private String doGenerateToken(Map<String, Object> claims, String subject) {
 
         return Jwts.builder()
-                .setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
+//                .setIssuer(ur.findByEmail(subject).getId().toString())
+//                .setClaims(claims)
+                .claim("id", ur.findByEmail(subject).getId().toString())
+                .setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
                 .signWith(SignatureAlgorithm.HS512, secret).compact();
     }
