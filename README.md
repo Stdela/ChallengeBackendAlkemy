@@ -9,7 +9,7 @@ In order to get the code ready in time there are some lacking features  that I w
 - This is the first time that I have provided documentation, so any advice will be received with open arms
 
 ### Updates
-1.0: Added id to jwt Token claims
+1.0: Added id to jwt Token claims. Tools to get Id have not been prepared yet. 
 
 
 ##### To be kept in mind
